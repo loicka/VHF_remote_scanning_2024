@@ -27,9 +27,10 @@ def initialize_database(config_file_path):
             for transmitterName in transmitter_names:
                 send_info_to_webpage(date_time, transmitterName, receiverName, decision)
 
-        print('Pausing for 1 minute, before sending next test run...')
-        # Pause for 1 minute
-        time.sleep(60)
+        if i==0:
+            print('Pausing for 1 minute, before sending next test run...')
+            # Pause for 1 minute
+            time.sleep(60)
 
 def send_info_to_webpage(date_time,transmitterName,receiverName,decision):
     from influxdb import InfluxDBClient
@@ -51,6 +52,7 @@ def send_info_to_webpage(date_time,transmitterName,receiverName,decision):
         },
         "fields": {
             "decision":decision,
+
             # "meanPulseLength": float(meanPulseLength),
             # "nHits": int(number_peaks),
             # "hitsExpected": int(7),
@@ -70,6 +72,12 @@ def send_info_to_webpage(date_time,transmitterName,receiverName,decision):
 config_file_path='config.yaml'
 # Initialization of database for grafana display
 config_file_path='config.yaml'
-initialize_database(config_file_path)
+#initialize_database(config_file_path)
 
-#send_info_to_webpage(date_time,transmitterName,receiverName,decision)
+#TEST SEND TO WEBPAGE
+from datetime import datetime
+date_time= datetime.now().strftime('%Y%m%d_%H%M%S')
+transmitterName='LAMP'
+receiverName='756W'
+decision=0
+send_info_to_webpage(date_time,transmitterName,receiverName,decision)
