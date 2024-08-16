@@ -1,0 +1,13 @@
+librosa was build against numpy 1.1.x, but only used by noisereduce
+I checked the noisereduce github and realized that in the latest version there was a readme entry "removed librosa".
+I assume for that very same reason of numpy.
+So 
+1. uninstall librosa
+2. install noisereduce from source to get the latest version that does not depend on it.
+3. install other stuff that was missing
+4. run the code and be happy
+
+
+pip uninstall librosa
+pip install git+https://github.com/timsainb/noisereduce.git
+pip install pyaml pydub psycopg2-binary influxdb

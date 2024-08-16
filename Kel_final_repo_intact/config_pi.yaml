@@ -1,0 +1,24 @@
+interval: 10.
+window_size: 0.1
+snr: 10.
+default_pulse: 1.33333333
+airspyPath: "/home/mars/software/vhf_grc/airspy4_nogui.py"
+outputFile: "/home/mars/vhf_data.yaml"
+wavFilePath: "/home/mars/vhf_data/"
+filename: "%Y%m%d-%H%M%S_atkaSPOT_vhf_{device}_{name}.wav"
+influx:
+  ip: "10.105.93.161"
+  port: 8086
+  database: "vhf"
+receiver_blacklist: []
+transmitter_blacklist: ["960",]
+receivers:
+  - name: "1269"
+    ip: "device_id=0,driver=airspy,serial=1269,soapy=0"
+gains: [32, 35, 40, 50, 60, 70, 80, 90, 99]
+transmitters:
+  -   name: "48"
+      frequency: 150429000
+      type: new
+      serial: 256648
+      pulse: 1.634
